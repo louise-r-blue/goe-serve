@@ -8,7 +8,6 @@ messages = {
       "sender": "Winter",
       "message": "Hello cold world!"
     },
-
   ]
 }
 
