@@ -6,7 +6,7 @@ messages = {
     {
       "id": 1,
       "sender": "Winter",
-      "message": "Hello cool world!"
+      "message": "You're just all hot air Summer"
     },
   ]
 }
