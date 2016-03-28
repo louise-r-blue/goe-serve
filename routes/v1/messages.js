@@ -8,21 +8,6 @@ messages = {
       "sender": "Winter",
       "message": "Hello cool world!"
     },
-    {
-      "id": 2,
-      "sender": "Spring",
-      "message": "Good morning world!"
-    },
-    {
-      "id": 3,
-      "sender":"Summer",
-      "message": "Hot hot hot"
-    },
-    {
-      "id": 4,
-      "sender":"Autumn",
-      "message": "creeps upon you like age"
-    }
   ]
 }
 
