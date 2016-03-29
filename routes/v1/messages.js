@@ -16,6 +16,7 @@ router.get('/', function(req, res, next) {
   res.json(messages);
 });
 
+//this needs replacing
 router.post('/', function(req, res, next) {
   var newMessage = req.body
   console.log("newMessage :", newMessage)
@@ -34,10 +35,10 @@ router.post('/', function(req, res, next) {
       newMessage["id"] = data.messages["message"].length + 1
       console.log("message :", message)
       //.then(function(res){
-      return fsa.writeFileAsync(__dirname + data, JSON.stringify(), 'utf8')
-  })
-      .catch(function(error){
-      console.log(error)
+        return fsa.writeFileAsync(__dirname + data, JSON.stringify(), 'utf8')
+      })
+  .catch(function(error){
+    console.log(error)
   })
 })
 
