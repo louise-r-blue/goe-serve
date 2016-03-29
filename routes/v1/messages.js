@@ -1,13 +1,18 @@
 var express = require('express');
 var router = express.Router();
-var Promise = require('bluebird')
-var fsa = Promise.promisifyAll(require('fs'))
-var fs = require('fs')
-var App = require('../../app')
-var knex = require('../../db-config').knex
-var db = require('../../db')(knex)
-var app = App(db)
+var Promise = require('bluebird');
+var fsa = Promise.promisifyAll(require('fs'));
+var fs = require('fs');
 
+var messages = require('../../models/messages.js')
+
+/* GET messages page */
+router.get('/', function(req, res, next){
+  messages.all()
+      .then(function(messages){
+        res.json(cats);
+      })
+});
 
 /* GET users messages. */
 router.get('/', function(req, res, next) {
@@ -16,7 +21,7 @@ router.get('/', function(req, res, next) {
   res.json(messages);
 });
 
-//this needs replacing
+//this needs replacing???
 router.post('/', function(req, res, next) {
   var newMessage = req.body
   console.log("newMessage :", newMessage)

@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
 
-  console.log('create table')
+  console.log('create table my_messages')
 
   return knex.schema.createTableIfNotExists('my_messages', function(table) {
       table.increments('id')
