@@ -3,15 +3,11 @@ var router = express.Router();
 var Promise = require('bluebird')
 var fsa = Promise.promisifyAll(require('fs'))
 var fs = require('fs')
-// messages = {
-//   messages: [
-//     {
-//       "id": 1,
-//       "sender": "Winter",
-//       "message": "Hello cold world!"
-//     },
-//   ]
-// }
+var App = require('../../app')
+var knex = require('../../db-config').knex
+var db = require('../../db')(knex)
+var app = App(db)
+
 
 /* GET users messages. */
 router.get('/', function(req, res, next) {
