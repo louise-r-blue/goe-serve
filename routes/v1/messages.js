@@ -10,7 +10,7 @@ var messages = require('../../models/messages.js')
 router.get('/', function(req, res, next){
   messages.all()
       .then(function(messages){
-        res.json(cats);
+        res.json(messages);
       })
 });
 
