@@ -8,5 +8,5 @@ function all() {
 }
 
 module.exports = {
-  all:all
+  all: all
 }

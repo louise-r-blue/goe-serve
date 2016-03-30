@@ -1,26 +1,21 @@
 var express = require('express');
 var router = express.Router();
 var Promise = require('bluebird');
-var fsa = Promise.promisifyAll(require('fs'));
 var fs = require('fs');
+Promise.promisifyAll(fs);
 
-var messages = require('../../models/messages.js')
 
-/* GET messages page */
-router.get('/', function(req, res, next){
-  messages.all()
-      .then(function(messages){
-        res.json(messages);
-      })
-});
+var message = require('../../models/messages')
 
 /* GET users messages. mme dont think so */
-router.get('/', function(req, res, next) {
-  var data = '/../../data/myMessages.json'
-  var messages = JSON.parse( fs.readFileSync(__dirname + data, "utf8"))
-  res.json(messages);
-});
 
+// router.get('/', function(req, res, next) {
+//   var data = '/../../data/myMessages.json'
+//   var messages = JSON.parse( fs.readFileSync(__dirname + data, "utf8"))
+//   res.json(messages);
+// });
+
+//back up
 messages = {
   messages: [
   {
@@ -42,9 +37,25 @@ messages = {
 }
 /* GET all old stored messages in database and render to browser */
 //this needs replacing with data base code
+router.get('/', function(req,res, next){
+ knex.select('user_name', 'messages').from('my_messages')
+    .then(function(rows){
+      console.log(rows);
+    })
+    .then(function(user_name){
+      console.log("user_name :", user_name);
+    })
+    .then(function(myMessages){
+      console.log("messages:", messaages);
+    })
+    .catch(function(error){
+      console.log(error);
+    });
+})
+
 router.post('/', function(req, res, next) {
   var newMessage = req.body
-  console.log("newMessage :", newMessage)
+  console.log("newMessage :", newMessage)//prints newly message
   if (validate(newMessage) == false){
     res.status(400).send('String values required in all fields')
   }
