@@ -1,6 +1,5 @@
-module.exports = newWords:
-{
-     [
+var newWords =
+    [
      "flower",
       "blossom",
       "petal",
@@ -17,7 +16,7 @@ module.exports = newWords:
       "raindrop",
       "bloom",
       "breeze",
-      " rainbow",
+      "rainbow",
       "dahlia",
       "sunshower",
       "butterfly",
@@ -46,4 +45,4 @@ module.exports = newWords:
       "cloudwalk",
       "avatar"
   ]
-}
+module.exports = newWords

@@ -10,14 +10,9 @@ Promise.promisifyAll(fs);
 
 var message = require('../../models/messages')
 var newWords = require('../../new-words')
+var badWords = require('../../bad-words')
 
 /* GET users messages. mme dont think so */
-
-// router.get('/', function(req, res, next) {
-//   var data = '/../../data/myMessages.json'
-//   var messages = JSON.parse( fs.readFileSync(__dirname + data, "utf8"))
-//   res.json(messages);
-// });
 
 //back up
 messages = {
@@ -40,21 +35,13 @@ messages = {
   ]
 }
 /* GET all old stored messages in database and render to browser */
-//this needs replacing with data base code
 router.get('/', function(req, res, next){
        console.log("data");
        message.all()
        .then(function(resp){
         console.log("msg :", resp)
-        res.json({})
+        res.send(resp)
        })
- // knex.select('user_name', 'messages').from('my_messages')
- //    .then(function(rows){
- //      console.log("database", rows);
- //    })
- //    .catch(function(error){
- //      console.log(error);
- //    });
 })
 
 router.post('/', function(req, res, next) {
@@ -62,17 +49,18 @@ router.post('/', function(req, res, next) {
   console.log("newMessage :", newMessage)//prints newly message
   if (validate(newMessage) == false){
     res.status(400).send('String values required in all fields')
-  } // add to database here
-  var user_name = ""
-  var messages = ""
-  newMessage.sender = user_name
-  newMessage.message = messages
-  message.insertMsg(user_name, messages)
-    .then(function(resp){
-      console.log("new :", resp)
-     res.json({});
-    })
-});
+  }
+});// add to database here
+  // var user_name = ""
+  // var messages = ""
+  // newMessage.sender = user_name
+  // newMessage.message = messages
+  //message.insertMsg(user_name, messages)
+//     .then(function(resp){
+//       //console.log("new :", resp)
+//      res.json({});
+//     })
+
 
 function validate(message) {
   for (var property in message) {
