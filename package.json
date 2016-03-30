@@ -13,7 +13,9 @@
     "debug": "~2.2.0",
     "express": "~4.13.1",
     "express-generator": "^4.13.1",
-    "morgan": "~1.6.1"
+    "knex": "^0.10.0",
+    "morgan": "~1.6.1",
+    "sqlite3": "^3.1.2"
   },
   "devDependencies": {
     "supertest": "^1.2.0",
