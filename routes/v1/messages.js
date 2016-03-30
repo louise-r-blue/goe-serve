@@ -14,38 +14,44 @@ router.get('/', function(req, res, next){
       })
 });
 
-/* GET users messages. */
+/* GET users messages. mme dont think so */
 router.get('/', function(req, res, next) {
   var data = '/../../data/myMessages.json'
   var messages = JSON.parse( fs.readFileSync(__dirname + data, "utf8"))
   res.json(messages);
 });
 
-//this needs replacing???
+messages = {
+  messages: [
+  {
+    "id": 1,
+    "user_name": "Summer",
+    "message": "I hear there is another ice age imminent"
+  },
+  {
+    "id": 2,
+    "user_name": "Winter",
+    "message": "Ah maybe not. Those carbon emissions are heating things up quicker than I can cool them down. Glacial ice and polar caps melt deferring the next ice age for a few thousand years at least. Perhaps. Maybe"
+  },
+  {
+    "id": 3,
+    "user_name": "Summer",
+    "message": "Yes yes. Global warming, climate change, melting ice. It is all just hot air."
+  }
+  ]
+}
+/* GET all old stored messages in database and render to browser */
+//this needs replacing with data base code
 router.post('/', function(req, res, next) {
   var newMessage = req.body
   console.log("newMessage :", newMessage)
   if (validate(newMessage) == false){
     res.status(400).send('String values required in all fields')
   }
-  //newMessage["id"] = data.messages.messages.length + 1
-  //messages.messages.push(newMessage)
-  //res.json(messages);
-  var data = '/../../data/myMessages.json'
-  fsa.readFileAsync(__dirname + data, "utf8")//need a data dir and data.json
-  .then(function(contents){
-      //var data = '/../../data/myMessages.json'
-      var idMessage = JSON.parse(contents)
-      console.log("idMessage", idMessage)
-      newMessage["id"] = data.messages["message"].length + 1
-      console.log("message :", message)
-      //.then(function(res){
-        return fsa.writeFileAsync(__dirname + data, JSON.stringify(), 'utf8')
-      })
-  .catch(function(error){
-    console.log(error)
-  })
-})
+  newMessage["id"] = messages.messages.length + 1
+  messages.messages.push(newMessage)
+  res.json(messages);
+});
 
 function validate(message) {
   for (var property in message) {
